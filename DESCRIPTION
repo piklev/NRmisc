@@ -1,9 +1,14 @@
 Package: NRmisc
-Title: What the package does (one line)
-Version: 0.1
-Authors@R: "First Last <first.last@example.com> [aut, cre]"
-Description: What the package does (one paragraph)
+Title: A collection of useful functions, scripts and data.
+Version: 0.2
+Authors@R: person("Niklas", "Roming", email="nroming@gmail.com",
+    role = c("aut", "cre"))
+Description: A collection of useful functions, scripts and data.
 Depends:
     R (>= 3.1.1)
-License: What license is it under?
+Imports:
+    reshape2,
+    ggplot2,
+    zoo
+License: LGPL-3
 LazyData: true
