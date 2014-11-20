@@ -14,7 +14,7 @@ ScenFixNR <- function(data, myitem, history, scenario){
   #   tmp <- tmp[complete.cases(tmp$value), ]
   tmp$model <- "EDGE"
   tmp1 <- data.frame()
-  for (s in ssp){
+  for (s in unique(data$scenario)){
     for (t in scenario){
       tmp$year <- t
       tmp$scenario <- s

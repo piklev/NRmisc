@@ -22,7 +22,9 @@ ProdNR <- function(data, newitem, factor1, factor2){
   #                   by=c("scenario", "region", "year"),
   #                   suffixes = c(".factor1", ".factor2"), all=TRUE)
   #   }
-  tmp4 <- merge(tmp2, tmp3, by = names(tmp0)[!(names(tmp0) %in% c("model", "unit", "item", "value"))],
+  tmp4 <- merge(tmp2, tmp3,
+                by = names(tmp0)[!(names(tmp0) %in%
+                                     c("model", "unit", "item", "value"))],
                 suffixes = c(".factor1", ".factor2"), all = TRUE)  
   
   # do the multiplication
