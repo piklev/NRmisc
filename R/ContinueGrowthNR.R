@@ -22,8 +22,6 @@ ContinueGrowthNR <- function(x){
   y$unit <- unique(x$unit)
   if ("iso3c" %in% colnames(x)){
     y$iso3c <- unique(x$iso3c)
-    y$reg11 <- unique(x$reg11)
-    y$reg33 <- unique(x$reg33)
   } else {
     y$region <- unique(x$region)
   }

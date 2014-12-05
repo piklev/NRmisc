@@ -8,7 +8,7 @@
 #' @param temp.hist Years of historical data (last time step of historical data
 #' is needed for computing values between historical data and first scenario
 #' data)
-#' @return NRmisc data frame with the new time steps attached to the origiginal
+#' @return NRmisc data frame with the new time steps attached to the original
 #' data
 #' @export
 #' 
@@ -78,11 +78,7 @@ IntermediateTimeStepsNR <- function(data, myitem, ts.length= 5, hist.scen,
     
     tmp.loop$unit <- unique(subset(tmp, scenario == scen &
                                      year < max(years.miss))$unit)
-    
-    # create region map and emrge with data
-    rmap <- unique(subset(tmp, select = c(iso3c, reg11, reg33)))
-    tmp.loop <- merge(tmp.loop, rmap)
-    
+      
     # remove the years for which data is already available
     tmp.loop <- subset(tmp.loop, year %in% years.miss)
     

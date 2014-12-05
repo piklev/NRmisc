@@ -20,8 +20,6 @@ FadeOutGrowthNR <- function(tmp, fade.time){
   tmp1$item <- unique(tmp$item)
   tmp1$unit <- unique(tmp$unit)
   tmp1$iso3c <- unique(tmp$iso3c)
-  tmp1$reg11 <- unique(tmp$reg11)
-  tmp1$reg33 <- unique(tmp$reg33)
   
   gr <- GetGrowthRateNR(subset(tmp, year %in% unique(tmp$year)))
   change <- gr/fade.time

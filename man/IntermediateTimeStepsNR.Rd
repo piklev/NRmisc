@@ -19,7 +19,7 @@ data)}
 \item{ts.lenght}{Target time step length}
 }
 \value{
-NRmisc data frame with the new time steps attached to the origiginal
+NRmisc data frame with the new time steps attached to the original
 data
 }
 \description{
