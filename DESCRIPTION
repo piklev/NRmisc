@@ -1,6 +1,6 @@
 Package: NRmisc
 Title: A collection of useful functions, scripts and data.
-Version: 1.0.0
+Version: 1.0.1
 Authors@R: person("Niklas", "Roming", email="nroming@gmail.com",
     role = c("aut", "cre"))
 Description: A collection of useful functions, scripts and data.

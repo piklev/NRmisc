@@ -5,10 +5,11 @@
 #' @param ag.vars Variables that should be aggregated
 #' @param region.mapping Region mapping to be applied (must be present in data
 #' frame)
+#' @param glob Decide whether to include global numbers in the output
 #' @return A data frame containing regional aggregates of ag.vars
 #' @export 
 
-AggregateNR <- function(x, ag.vars, region.mapping="reg11"){
+AggregateNR <- function(x, ag.vars, region.mapping="reg11", glob=TRUE){
   require(reshape2)
   # select appropriate subset
   a <- subset(x, item %in% ag.vars)
@@ -34,12 +35,16 @@ AggregateNR <- function(x, ag.vars, region.mapping="reg11"){
   b <- dcast(a, my.formula)
   
   # aggregate values according to region mapping and create global aggregates
-  c <- aggregate(b[ag.vars], b[c("scenario", "year", region.mapping)], FUN=sum, na.rm=TRUE)
+  c <- aggregate(b[ag.vars], b[ ,c("scenario", "year", region.mapping)], FUN=sum, na.rm=TRUE)
   names(c)[names(c)==region.mapping] <- "region" # renaming
-  c.glob <- aggregate(b[ag.vars], b[c("scenario", "year")], FUN=sum, na.rm=TRUE)
-  c.glob$region <- "glob"
-  c.glob <- c.glob[names(c)]
-  c <- rbind(c, c.glob)
+  
+  # optional (default = TRUE) calculation of global values
+  if(glob){
+    c.glob <- aggregate(b[ag.vars], b[c("scenario", "year")], FUN=sum, na.rm=TRUE)
+    c.glob$region <- "glob"
+    c.glob <- c.glob[names(c)]
+    c <- rbind(c, c.glob)
+  }
   
   # create a long data frame
   d <- melt(c, id.vars=c("scenario","year","region"))
