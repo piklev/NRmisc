@@ -50,8 +50,7 @@ AggregateNR <- function(x, ag.vars, region.mapping="reg11", glob=TRUE){
   d <- melt(c, id.vars=c("scenario","year","region"))
   names(d)[names(d)=="variable"] <- "item" # renaming
   d$item <- as.character(d$item) # convert from factor to character
-  d <- merge(d, models)
-  
+
   e <- merge(d, units)
   e <- merge(e, models)
   

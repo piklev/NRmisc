@@ -3,7 +3,7 @@
 \alias{AggregateNR}
 \title{Performs regional aggregation}
 \usage{
-AggregateNR(x, ag.vars, region.mapping = "reg11")
+AggregateNR(x, ag.vars, region.mapping = "reg11", glob = TRUE)
 }
 \arguments{
 \item{x}{A NRmisc compatible data frame}
@@ -12,6 +12,8 @@ AggregateNR(x, ag.vars, region.mapping = "reg11")
 
 \item{region.mapping}{Region mapping to be applied (must be present in data
 frame)}
+
+\item{glob}{Decide whether to include global numbers in the output}
 }
 \value{
 A data frame containing regional aggregates of ag.vars
