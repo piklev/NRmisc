@@ -34,8 +34,12 @@ AggregateNR <- function(x, ag.vars, region.mapping="reg11", glob=TRUE){
   # create a wide data.frame
   b <- dcast(a, my.formula)
   
-  # aggregate values according to region mapping and create global aggregates
-  c <- aggregate(b[ag.vars], b[ ,c("scenario", "year", region.mapping)], FUN=sum, na.rm=TRUE)
+  # aggregate values according to region mapping and create global aggregates 
+  # CHECK: aggregation causes zeros to show up when there is no data for a
+  # region, even in the case that for each year and scenario, only NAs are
+  # present, therefore, zeros are manually replaced with NAs below
+  c <- aggregate(b[ag.vars], b[ ,c("scenario", "year", region.mapping)],
+                 FUN = sum, na.rm = TRUE)
   names(c)[names(c)==region.mapping] <- "region" # renaming
   
   # optional (default = TRUE) calculation of global values
@@ -48,6 +52,10 @@ AggregateNR <- function(x, ag.vars, region.mapping="reg11", glob=TRUE){
   
   # create a long data frame
   d <- melt(c, id.vars=c("scenario","year","region"))
+  
+  # remove the zero values created in the aggregation above
+  d <- subset(d, value != 0)
+  
   names(d)[names(d)=="variable"] <- "item" # renaming
   d$item <- as.character(d$item) # convert from factor to character
 
