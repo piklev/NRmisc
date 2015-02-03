@@ -6,9 +6,11 @@
 #' @return A NRmisc compatible data frame without the gaps in the respective
 #' time-series
 #' @export
-InterpolateNR <- function(data, myitem){
+InterpolateNR <- function(data, myitem,zeroAsNA=TRUE){
   tmp <- subset(data, item == myitem)
+  if (zeroAsNA) {
   tmp[tmp == 0] <- NA
+  }
   
   # remove rows containing zero from the original data frame
   # the gaps remaining will be filled using interpolated data
