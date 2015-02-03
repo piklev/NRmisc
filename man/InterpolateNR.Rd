@@ -3,7 +3,7 @@
 \alias{InterpolateNR}
 \title{Interpolates (linearly) values for gaps in time-series}
 \usage{
-InterpolateNR(data, myitem)
+InterpolateNR(data, myitem, zeroAsNA=TRUE)
 }
 \arguments{
 \item{data}{A NRmisc compatible data frame}
