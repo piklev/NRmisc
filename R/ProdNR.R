@@ -5,11 +5,18 @@
 #' @param newitem Name of the new variable that is calculated.
 #' @param factor1 Name of the first variable to be multiplied.
 #' @param factor2 Name of the second variable to be multiplied.
+#' @param redundant Determine whether redundant information should be
+#'   included (default = FALSE).
 #' @return The original data frame with the newly calculated data appended.
 #' @export
-ProdNR <- function(data, newitem, factor1, factor2){
+ProdNR <- function(data, newitem, factor1, factor2, redundant = FALSE){
   tmp0 <- subset(data, item %in% c(newitem, factor1, factor2))
-  tmp1 <- AvoidRedundancy(tmp0, newitem)
+  
+  if(redundant){
+    tmp1 <- tmp0
+  } else {
+    tmp1 <- AvoidRedundancy(tmp0, newitem)
+  }
   tmp2 <- subset(tmp1, item == factor1)
   tmp3 <- subset(tmp1, item == factor2)
   

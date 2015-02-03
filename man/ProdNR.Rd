@@ -3,7 +3,7 @@
 \alias{ProdNR}
 \title{Calculates the product of two variables}
 \usage{
-ProdNR(data, newitem, factor1, factor2)
+ProdNR(data, newitem, factor1, factor2, redundant = FALSE)
 }
 \arguments{
 \item{data}{A data frame in standard long format.}
@@ -13,6 +13,9 @@ ProdNR(data, newitem, factor1, factor2)
 \item{factor1}{Name of the first variable to be multiplied.}
 
 \item{factor2}{Name of the second variable to be multiplied.}
+
+\item{redundant}{Determine whether redundant information should be
+included (default = FALSE).}
 }
 \value{
 The original data frame with the newly calculated data appended.
