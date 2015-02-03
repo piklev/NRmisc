@@ -9,6 +9,8 @@ InterpolateNR(data, myitem, zeroAsNA=TRUE)
 \item{data}{A NRmisc compatible data frame}
 
 \item{myitem}{Variable for which interpolation shall be carried out.}
+
+\item{zerosAsNA}{Treat zeros as missing values or not?}
 }
 \value{
 A NRmisc compatible data frame without the gaps in the respective
