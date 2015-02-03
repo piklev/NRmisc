@@ -14,7 +14,10 @@ InterpolateNR <- function(data, myitem,zeroAsNA=TRUE){
   
   # remove rows containing zero from the original data frame
   # the gaps remaining will be filled using interpolated data
+  if (zeroAsNA) {
   data[data$value == 0 & data$item == myitem, "value"] <- NA
+  }
+  
   data <- data[!is.na(data$value), ]
   
   #   data.n <- data.frame()
