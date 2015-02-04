@@ -16,7 +16,7 @@ SumNR <- function(data, newitem, add, substract){
   tmp <- subset(data, item %in% variables)
   
   if ("iso3c" %in% colnames(tmp)) {
-    tmp.w <- dcast(tmp, scenario + iso3c + year ~ item)
+    tmp.w <- dcast(tmp, scenario + iso3c + year +reg11 +reg33~ item)
   } else {
     tmp.w <- dcast(tmp, scenario + region + year ~ item)
   }
