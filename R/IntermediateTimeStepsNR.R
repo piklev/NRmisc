@@ -50,7 +50,7 @@ IntermediateTimeStepsNR <- function(data, myitem, ts.length= 5, hist.scen,
     }
     
     # reshape to wide format
-    tmp.loop <- dcast(tmp.loop, year ~ iso3c, value.var = "value")
+    tmp.loop <- dcast(tmp.loop, year ~ iso3c + reg11 + reg33, value.var = "value")
     
     # add rows for missing years
     for(year in years.miss){
@@ -78,6 +78,9 @@ IntermediateTimeStepsNR <- function(data, myitem, ts.length= 5, hist.scen,
     
     tmp.loop$unit <- unique(subset(tmp, scenario == scen &
                                      year < max(years.miss))$unit)
+    tmp.loop$reg11<-substr(tmp.loop$iso3c,5,7)
+    tmp.loop$reg33<-substr(tmp.loop$iso3c,9,11)
+    tmp.loop$iso3c<-substr(tmp.loop$iso3c,1,3)
       
     # remove the years for which data is already available
     tmp.loop <- subset(tmp.loop, year %in% years.miss)
