@@ -58,6 +58,8 @@ InterpolateNR <- function(data, myitem,zeroAsNA=TRUE){
         tmp.c.n$scenario <- "history"
         tmp.c.n$item <- unique(tmp$item)
         tmp.c.n$unit <- unique(tmp$unit)[1]
+        tmp.c.n$reg11 <- unique(tmp.c$reg11)
+        tmp.c.n$reg33 <- unique(tmp.c$reg33)
       }
     }
     if(exists("tmp.c.n")){
