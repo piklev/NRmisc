@@ -54,6 +54,11 @@ ProdNR <- function(data, newitem, factor1, factor2, redundant = FALSE){
   #   if(unit.factor1 == "%"){unit.factor1 <- ""}
   #   
   #   if(unit.factor2 == "%"){unit.factor2 <- ""}
+     
+  #Unsatisfying solution for the problem of % that have the unit 1-> why are the three above lines outcommented?
+  if(unit.factor1 == "1"){unit.factor1 <- ""}
+     
+     if(unit.factor2 == "1"){unit.factor2 <- ""}
   
   tmp4$unit  <- paste(unit.factor2[1], unit.factor1[1], sep="")
   
