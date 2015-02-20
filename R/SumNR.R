@@ -15,10 +15,14 @@ SumNR <- function(data, newitem, add, substract){
   
   tmp <- subset(data, item %in% variables)
   
+  
+ 
+  
   if ("iso3c" %in% colnames(tmp)) {
     tmp.w <- dcast(tmp, scenario + iso3c + year +reg11 +reg33~ item)
   } else {
-    tmp.w <- dcast(tmp, scenario + region + year ~ item)
+    selectCol <- names(tmp)[!(names(tmp) %in% c("model","unit","item", "value"))]
+    tmp.w <- dcast(tmp, paste(paste(selectCol, collapse = " + "), " ~ item"))
   }
   
   # check for unit consistency (all variables must have the same unit)
